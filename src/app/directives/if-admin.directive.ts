@@ -1,7 +1,7 @@
 import { Directive, inject, OnInit } from '@angular/core';
 import { NgIf } from "@angular/common";
 import { IdentityService } from "../services/identity.service";
-import { Role } from "../roles.enum";
+import { AuthenticationService } from "../services/authentication.service";
 
 @Directive({
   selector: '[ifAdmin]',
@@ -13,11 +13,11 @@ import { Role } from "../roles.enum";
 export class IfAdminDirective implements OnInit {
 
   private identityService = inject(IdentityService);
+  private authenticationService = inject(AuthenticationService);
   private ngIfDirective = inject(NgIf);
 
   ngOnInit() {
-    console.log(this.identityService.roles);
-    this.ngIfDirective.ngIf = this.identityService.roles.includes(Role.Admin);
+    this.ngIfDirective.ngIf = this.authenticationService.isAuthenticated && this.identityService.isAdmin();
   }
 
 }

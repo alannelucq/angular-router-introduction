@@ -7,4 +7,8 @@ import { Role } from "../roles.enum";
 })
 export class IdentityService {
   roles = [Role.Admin, Role.Customer];
+
+  isAdmin() {
+    return this.roles.includes(Role.Admin);
+  }
 }

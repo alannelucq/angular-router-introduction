@@ -1,10 +1,11 @@
-import { Router, Routes } from "@angular/router";
+import { Routes } from "@angular/router";
 import { HomeComponent } from "./views/home.component";
 import { inject } from "@angular/core";
 import { AuthenticationService } from "./services/authentication.service";
 import { DashboardComponent } from "./views/dashboard.component";
 import { OrdersComponent } from "./views/orders.component";
 import { ProfileComponent } from "./views/profile.component";
+import { IdentityService } from "./services/identity.service";
 
 export const routes: Routes = [
   {
@@ -13,11 +14,12 @@ export const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [() => inject(AuthenticationService).isAuthenticated || inject(Router).navigate(['/'])],
+    canMatch: [() => inject(AuthenticationService).isAuthenticated],
     children: [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canMatch: [() => inject(IdentityService).isAdmin()]
       },
       {
         path: 'orders',
@@ -29,4 +31,8 @@ export const routes: Routes = [
       },
     ]
   },
+  {
+    path: '**',
+    redirectTo: '/'
+  }
 ];
