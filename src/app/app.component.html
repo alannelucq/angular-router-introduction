@@ -1,10 +1,8 @@
   <header>
-    <a
-      *ngFor="let item of menuItems"
-      routerLinkActive="active"
-      [routerLink]="item.path"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >{{ item.name }}</a>
+    <a routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+    <a routerLinkActive="active" routerLink="dashboard" *showIfAuthenticated>Dashboard</a>
+    <a routerLinkActive="active" routerLink="orders" *showIfAuthenticated>Mes commandes</a>
+    <a routerLinkActive="active" routerLink="profile" *showIfAuthenticated>Mon Profil</a>
   </header>
   <div class="content">
     <router-outlet/>
