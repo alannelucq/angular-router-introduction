@@ -3,13 +3,13 @@ import { NgIf } from "@angular/common";
 import { AuthenticationService } from "../services/authentication.service";
 
 @Directive({
-  selector: '[showIfAuthenticated]',
+  selector: '[ifAuthenticated]',
   standalone: true,
   hostDirectives: [{
     directive: NgIf
   }]
 })
-export class ShowIfAuthenticatedDirective implements OnInit {
+export class IfAuthenticatedDirective implements OnInit {
 
   private authenticationService = inject(AuthenticationService);
   private ngIfDirective = inject(NgIf);
