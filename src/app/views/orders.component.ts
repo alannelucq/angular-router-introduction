@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <h1>Mes commandes</h1>
-    <p>Seuls utilisateurs authentifiés peuvent accéder à cet écran.</p>
+    <p>Seuls les utilisateurs authentifiés peuvent accéder à cet écran.</p>
   `,
 })
 export class OrdersComponent {

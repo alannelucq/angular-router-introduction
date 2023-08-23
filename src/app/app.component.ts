@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { AuthenticationService } from "./services/authentication.service";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,7 @@ import { AuthenticationService } from "./services/authentication.service";
 })
 export class AppComponent {
   menuItems = [
-    { name: 'Accueil', path: '' },
+    {name: 'Accueil', path: ''},
     { name: 'Dashboard', path: 'dashboard' },
     { name: 'Mes commandes', path: 'orders' },
     { name: 'Mon profil', path: 'profile' }

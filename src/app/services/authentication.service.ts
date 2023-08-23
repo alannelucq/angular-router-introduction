@@ -1,12 +1,9 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { Router } from "@angular/router";
-import { toObservable } from "@angular/core/rxjs-interop";
-import { of } from "rxjs";
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  isAuthenticated = false;
+  isAuthenticated = true;
 }

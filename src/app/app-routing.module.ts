@@ -1,31 +1,34 @@
 import { inject, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./views/home.component";
 import { DashboardComponent } from "./views/dashboard.component";
 import { OrdersComponent } from "./views/orders.component";
 import { ProfileComponent } from "./views/profile.component";
+import { AuthenticationService } from "./services/authentication.service";
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: '',
+    canActivate: [() => inject(AuthenticationService).isAuthenticated || inject(Router).navigate(['/'])],
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ]
   },
-  {
-    path: 'orders',
-    component: OrdersComponent
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent
-  },
-  {
-    path: '**',
-    redirectTo: '/home'
-  }
 ];
 
 @NgModule({
