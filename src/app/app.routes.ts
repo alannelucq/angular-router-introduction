@@ -1,12 +1,12 @@
-import { inject, NgModule } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router, Routes } from "@angular/router";
 import { HomeComponent } from "./views/home.component";
+import { inject } from "@angular/core";
+import { AuthenticationService } from "./services/authentication.service";
 import { DashboardComponent } from "./views/dashboard.component";
 import { OrdersComponent } from "./views/orders.component";
 import { ProfileComponent } from "./views/profile.component";
-import { AuthenticationService } from "./services/authentication.service";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: HomeComponent
@@ -30,9 +30,3 @@ const routes: Routes = [
     ]
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
