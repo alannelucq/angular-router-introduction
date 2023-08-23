@@ -2,9 +2,6 @@ import { Routes } from "@angular/router";
 import { HomeComponent } from "./views/home.component";
 import { inject } from "@angular/core";
 import { AuthenticationService } from "./services/authentication.service";
-import { DashboardComponent } from "./views/dashboard.component";
-import { OrdersComponent } from "./views/orders.component";
-import { ProfileComponent } from "./views/profile.component";
 import { IdentityService } from "./services/identity.service";
 
 export const routes: Routes = [
@@ -18,16 +15,16 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent,
-        canMatch: [() => inject(IdentityService).isAdmin()]
+        canMatch: [() => inject(IdentityService).isAdmin()],
+        loadComponent: () => import('./views/dashboard.component').then(m => m.DashboardComponent)
       },
       {
         path: 'orders',
-        component: OrdersComponent,
+        loadComponent: () => import('./views/orders.component').then(m => m.OrdersComponent),
       },
       {
         path: 'profile',
-        component: ProfileComponent,
+        loadComponent: () => import('./views/profile.component').then(m => m.ProfileComponent),
       },
     ]
   },
