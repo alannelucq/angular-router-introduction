@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthenticationService } from "./services/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-router-app';
+  menuItems = [
+    { name: 'Accueil', path: '' },
+    { name: 'Dashboard', path: 'dashboard' },
+    { name: 'Mes commandes', path: 'orders' },
+    { name: 'Mon profil', path: 'profile' }
+  ];
 }
